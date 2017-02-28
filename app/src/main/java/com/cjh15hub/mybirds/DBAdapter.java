@@ -38,7 +38,7 @@ public class DBAdapter extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         //db.execSQL("CREATE TABLE BIRD (id integer primary key, name text, desc text)");
             String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_BIRD + "("
-                    + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME + " TEXT,"
                     + KEY_DESC + " TEXT" + ")";
             db.execSQL(CREATE_CONTACTS_TABLE);
 
@@ -135,10 +135,11 @@ public class DBAdapter extends SQLiteOpenHelper {
         return s;
     }
 
-    public void deleteContact(Bird bird){
+    public void deleteBird(Bird bird){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BIRD, KEY_ID + " = ?",
                 new String[] { String.valueOf(bird.getID()) });
         db.close();
     }
+
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_upper_main"
+    android:id="@+id/content_selected__bird"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.cjh15hub.mybirds.Selected_Bird"
+    tools:showIn="@layout/activity_selected__bird">
 
 
     <TextView
@@ -24,7 +25,7 @@
         android:textAllCaps="false" />
 
     <LinearLayout
-        android:id="@+id/activity_main"
+        android:id="@+id/main_content"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,5 +75,5 @@
     </LinearLayout>
 
 
-</LinearLayout>
 
+</LinearLayout>

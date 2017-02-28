@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Birds</string>
+    <string name="title_activity_bird__selected">Bird Selected</string>
+    <string name="title_activity_selected__bird">Selected Bird</string>
 </resources>
