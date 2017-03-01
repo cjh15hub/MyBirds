@@ -91,10 +91,9 @@ public class DBAdapter extends SQLiteOpenHelper {
 
     public List<Bird> getAllBirds(){
         List<Bird> birdList = new ArrayList<Bird>();
-        String selectQuery = "SELECT  * FROM " + TABLE_BIRD;
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.query(TABLE_BIRD,new String[]{"*"},null,null,null,null,null);
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
@@ -113,11 +112,10 @@ public class DBAdapter extends SQLiteOpenHelper {
     }
 
     public int getBirdCount(){
-        String countQuery = "SELECT  * FROM " + TABLE_BIRD;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
-        int c = cursor.getCount();
+        Cursor cursor = db.query(false,TABLE_BIRD,new String[]{"Count(ID)"},null,null,null,null,null,null);
+        cursor.moveToFirst();
+        int c = cursor.getInt(0);
         db.close();
         return c;
     }
@@ -139,6 +137,13 @@ public class DBAdapter extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BIRD, KEY_ID + " = ?",
                 new String[] { String.valueOf(bird.getID()) });
+        db.close();
+    }
+
+
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BIRD,null,null);
         db.close();
     }
 
