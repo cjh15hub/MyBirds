@@ -1,5 +1,6 @@
 package com.cjh15hub.mybirds;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -22,6 +23,7 @@ public class Selected_Bird extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected__bird);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Bird Record");
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -35,8 +37,15 @@ public class Selected_Bird extends AppCompatActivity {
 
         birdName =(TextView) findViewById(R.id.birdName);
         descText =(TextView) findViewById(R.id.desc_Text);
+        //Intent intent = getIntent();
+        Bundle extras = getIntent().getExtras();
+        int receivedID = extras.getInt(MainActivity.EXTRA_BIRD_ID);
 
+        DBAdapter db = new DBAdapter(this);
 
+        Bird this_bird =  db.getBird(receivedID);
+        birdName.setText(this_bird.getName());
+        descText.setText(this_bird.getDescription());
 
     }
 
