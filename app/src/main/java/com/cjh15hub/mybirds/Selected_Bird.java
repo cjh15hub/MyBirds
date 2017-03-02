@@ -6,8 +6,16 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Selected_Bird extends AppCompatActivity {
+
+
+    TextView birdName;
+    TextView descText;
+
+    ImageView primaryImage; //not used at this time
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +32,12 @@ public class Selected_Bird extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        birdName =(TextView) findViewById(R.id.birdName);
+        descText =(TextView) findViewById(R.id.desc_Text);
+
+
+
     }
 
 }

@@ -43,7 +43,7 @@
             android:layout_height="220dp" />
 
         <TextView
-            android:id="@+id/Desc_Text"
+            android:id="@+id/desc_Text"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginTop="5dp"

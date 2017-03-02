@@ -140,7 +140,6 @@ public class DBAdapter extends SQLiteOpenHelper {
         db.close();
     }
 
-
     public void deleteAll(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_BIRD,null,null);

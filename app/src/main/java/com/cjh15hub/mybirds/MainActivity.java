@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         _mActivity = this;
         birds = new ArrayList<>();
 //        activy_mover = (Button) (findViewById(R.id.activity_mover));
-//        activy_mover.setOnClickListener(new View.OnClickListener() {
+//        activy_mover.setOnClickListener(new View.OnClickListener() {v
 //            @Override
 //            public void onClick(View v) {
 //                Intent selectedActivity = new Intent(v.getContext(),Bird_Selected.class);
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(bAdapter);
 
         DBAdapter db = new DBAdapter(this);
