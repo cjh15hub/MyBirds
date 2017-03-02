@@ -15,8 +15,7 @@ public class Selected_Bird extends AppCompatActivity {
 
     TextView birdName;
     TextView descText;
-
-    ImageView primaryImage; //not used at this time
+    ImageView primaryImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +36,7 @@ public class Selected_Bird extends AppCompatActivity {
 
         birdName =(TextView) findViewById(R.id.birdName);
         descText =(TextView) findViewById(R.id.desc_Text);
+        primaryImage= (ImageView) findViewById(R.id.primaryImage);
         //Intent intent = getIntent();
         Bundle extras = getIntent().getExtras();
         int receivedID = extras.getInt(MainActivity.EXTRA_BIRD_ID);
@@ -46,6 +46,9 @@ public class Selected_Bird extends AppCompatActivity {
         Bird this_bird =  db.getBird(receivedID);
         birdName.setText(this_bird.getName());
         descText.setText(this_bird.getDescription());
+        String s = this_bird.getImageURL();
+        new DownloadImageTask(primaryImage)
+                .execute(s);
 
     }
 

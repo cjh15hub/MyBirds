@@ -2,6 +2,7 @@ package com.cjh15hub.mybirds;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,11 @@ public class BirdListAdapter extends RecyclerView.Adapter<BirdListAdapter.BViewH
     public void onBindViewHolder(BViewHolder holder, int position) {
         Bird bird = birdList.get(position);
         holder.thumb.setImageResource(R.drawable.placeholder);
+        String s = bird.getImageURL();
+        Log.i("imageurl: " , s);
+        new DownloadImageTask(holder.thumb)
+                .execute(s);
+
         //holder.thumb.setImageResource(bird.);
         holder.name.setText(bird.getName());
         holder.desc.setText(bird.getDescription());
