@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         //recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        recyclerView.addItemDecoration(new BackgroundItemDecoration(R.color.colorPrimary,R.color.colorPrimaryDark));
+        recyclerView.addItemDecoration(new BackgroundItemDecoration(R.color.colorRowEven,R.color.colorRowOdd));
         recyclerView.setAdapter(bAdapter);
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override

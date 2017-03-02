@@ -14,7 +14,7 @@ public class BackgroundItemDecoration extends RecyclerView.ItemDecoration {
     private final int mOddBackground;
     private final int mEvenBackground;
 
-    public BackgroundItemDecoration(@DrawableRes int oddBackground, @DrawableRes int evenBackground) {
+    public BackgroundItemDecoration(@DrawableRes int evenBackground, @DrawableRes int oddBackground) {
         mOddBackground = oddBackground;
         mEvenBackground = evenBackground;
     }
@@ -24,5 +24,6 @@ public class BackgroundItemDecoration extends RecyclerView.ItemDecoration {
         super.getItemOffsets(outRect, view, parent, state);
         int position = parent.getChildAdapterPosition(view);
         view.setBackgroundResource(position % 2 == 0 ? mEvenBackground : mOddBackground);
+        view.findViewById(R.id.sep_bar).setBackgroundResource(position % 2 == 0 ? R.color.colorPrimary: R.color.colorAccent);
     }
 }
