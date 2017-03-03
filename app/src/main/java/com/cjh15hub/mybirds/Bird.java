@@ -12,6 +12,7 @@ public class Bird {
     private String name;
     private String description;
     private String imageURL;
+    public  String cachedImage = null;
 
 
     public Bird(int id, String name, String description) {

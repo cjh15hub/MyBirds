@@ -47,7 +47,7 @@ public class Selected_Bird extends AppCompatActivity {
         birdName.setText(this_bird.getName());
         descText.setText(this_bird.getDescription());
         String s = this_bird.getImageURL();
-        new DownloadImageTask(primaryImage)
+        new DownloadImageTask(primaryImage,this_bird)
                 .execute(s);
 
     }

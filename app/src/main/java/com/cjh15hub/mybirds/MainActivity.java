@@ -10,13 +10,17 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.os.Environment.getExternalStorageState;
+import static android.os.Environment.isExternalStorageEmulated;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_BIRD_ID = "com.cjh15hub.mybirds.BIRD_ID";
+    public static File CACHE_DIR;
 
     Button activy_mover;
     Activity _mActivity;
@@ -30,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         _mActivity = this;
+
+        CACHE_DIR = getExternalCacheDir();
+        if(isExternalStorageEmulated(CACHE_DIR)) CACHE_DIR = getCacheDir();
+        //Log.i("main activity",CACHE_DIR.getAbsolutePath());
+
         birds = new ArrayList<>();
 //        activy_mover = (Button) (findViewById(R.id.activity_mover));
 //        activy_mover.setOnClickListener(new View.OnClickListener() {v
@@ -86,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         db.addBird(new Bird("House Finch", "The male House Finch has a length of about 5 1/2 inches, with red on the head, upper breast and flanks. In some regions the color red may be replaced with yellow or orange. This is due to the differences in regional diets.","http://www.wild-bird-watching.com/images/House-Finch-350.jpg"));
         db.addBird(new Bird("Pigeon", "Pigeons have different colors due to breeding by humans. They are the descendants of the wild Rock Dove of Europe.","http://www.wild-bird-watching.com/images/xpigeontop1.jpg.pagespeed.ic.lPHRh26exd.jpg"));
         db.addBird(new Bird("American Robin", "American Robins have gray upperparts and the familiar reddish breast, varying from pale rust to a dark brick red. Male and females look nearly identical. The females colors are less vibrant.","http://www.wild-bird-watching.com/images/xRobin.jpg.pagespeed.ic.lnxfKTh9zK.jpg"));
+        db.addBird(new Bird("Fake Bird","Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\",comes from a line in section 1.10.32. \r\n\t There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",""));
         birds.addAll(db.getAllBirds());
         bAdapter.notifyDataSetChanged();
 //        db.deleteAll(); //debug only

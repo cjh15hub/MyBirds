@@ -1,6 +1,7 @@
 package com.cjh15hub.mybirds;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import java.util.List;
 public class BirdListAdapter extends RecyclerView.Adapter<BirdListAdapter.BViewHolder> {
 
     private List<Bird> birdList;
+    private List<Drawable> cachedImgs;
 
     public BirdListAdapter(List<Bird> birdList){
         this.birdList = birdList;
@@ -37,7 +39,7 @@ public class BirdListAdapter extends RecyclerView.Adapter<BirdListAdapter.BViewH
         holder.thumb.setImageResource(R.drawable.placeholder);
         String s = bird.getImageURL();
         Log.i("imageurl: " , s);
-        new DownloadImageTask(holder.thumb)
+        new DownloadImageTask(holder.thumb,bird)
                 .execute(s);
 
         //holder.thumb.setImageResource(bird.);
