@@ -40,15 +40,10 @@ public class MainActivity extends AppCompatActivity {
         //Log.i("main activity",CACHE_DIR.getAbsolutePath());
 
         birds = new ArrayList<>();
-//        activy_mover = (Button) (findViewById(R.id.activity_mover));
-//        activy_mover.setOnClickListener(new View.OnClickListener() {v
-//            @Override
-//            public void onClick(View v) {
-//                Intent selectedActivity = new Intent(v.getContext(),Bird_Selected.class);
-//                selectedActivity.putExtra("birdId",0);
-//                _mActivity.startActivity(selectedActivity);
-//            }
-//        });
+
+
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
